@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kép hover szöveg</title>
+  <style>
+    .image-container {
+      position: relative; /* fontos, hogy a szöveg a képhez igazodjon */
+      display: inline-block;
+    }
+
+    .image-container img {
+      display: block;
+      max-width: 300px;
+      border-radius: 10px;
+    }
+
+    .hover-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 10px 15px;
+      border-radius: 8px;
+      opacity: 0;               /* alapból láthatatlan */
+      transition: opacity 0.3s; /* finom átmenet */
+      pointer-events: none;     /* ne zavarja az egér eseményt */
+    }
+
+    .image-container:hover .hover-text {
+      opacity: 1; /* hovernél megjelenik */
+    }
+  </style>
+</head>
+<body>
+  <div class="image-container">
+    <img src="kepek/avp.png" alt="Minta kép">
+    <div class="hover-text">Ez a szöveg hoverre jelenik meg!</div>
+  </div>
+</body>
+</html>
