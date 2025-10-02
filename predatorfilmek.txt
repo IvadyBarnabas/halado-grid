@@ -1,0 +1,4 @@
+Predator:
+<iframe width="640" height="360" src="//videa.hu/player?v=7teyMhJJwf8FAFgI" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" frameborder="0"></iframe>
+avp2:
+"//embed.indavideo.hu/player/video/45de170a0c"

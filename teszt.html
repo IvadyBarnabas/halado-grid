@@ -2,43 +2,103 @@
 <html lang="hu">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kép hover szöveg</title>
+  <title>CSS-only Player</title>
   <style>
-    .image-container {
-      position: relative; /* fontos, hogy a szöveg a képhez igazodjon */
-      display: inline-block;
-    }
-
-    .image-container img {
-      display: block;
-      max-width: 300px;
-      border-radius: 10px;
-    }
-
-    .hover-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(0, 0, 0, 0.7);
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
       color: white;
-      padding: 10px 15px;
-      border-radius: 8px;
-      opacity: 0;               /* alapból láthatatlan */
-      transition: opacity 0.3s; /* finom átmenet */
-      pointer-events: none;     /* ne zavarja az egér eseményt */
+      display: flex;
+      height: 100vh;
     }
 
-    .image-container:hover .hover-text {
-      opacity: 1; /* hovernél megjelenik */
+    /* Bal oldali menü */
+    .menu {
+      width: 200px;
+      background: #222;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    label {
+      background: #333;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.3s;
+    }
+    label:hover {
+      background: #444;
+    }
+
+    /* Jobb oldali tartalom */
+    .content {
+      flex: 1;
+      background: #181818;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* rejtett checkbox */
+    input[type="radio"] {
+      display: none;
+    }
+
+    .video {
+      display: none;
+      position: absolute;
+      width: 80%;
+      height: 80%;
+    }
+
+    /* Ha a radio be van kapcsolva, mutatjuk a hozzá tartozó videót */
+    #film1:checked ~ .content #v1,
+    #film2:checked ~ .content #v2,
+    #film3:checked ~ .content #v3 {
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 10px;
     }
   </style>
 </head>
 <body>
-  <div class="image-container">
-    <img src="kepek/avp.png" alt="Minta kép">
-    <div class="hover-text">Ez a szöveg hoverre jelenik meg!</div>
+
+  <!-- rejtett inputok -->
+  <input type="radio" name="film" id="film1">
+  <input type="radio" name="film" id="film2">
+  <input type="radio" name="film" id="film3">
+
+  <!-- bal oldali menü -->
+  <div class="menu">
+    <label for="film1">Film 1</label>
+    <label for="film2">Film 2</label>
+    <label for="film3">Film 3</label>
   </div>
+
+  <!-- jobb oldali tartalom -->
+  <div class="content">
+    <div class="video" id="v1">
+      <iframe src="//videa.hu/player?v=7teyMhJJwf8FAFgI" allowfullscreen></iframe>
+    </div>
+    <div class="video" id="v2">
+      <iframe src="https://videa.hu/player?v=yyyyy" allowfullscreen></iframe>
+    </div>
+    <div class="video" id="v3">
+      <iframe src="https://videa.hu/player?v=zzzzz" allowfullscreen></iframe>
+    </div>
+  </div>
+
 </body>
 </html>
